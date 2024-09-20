@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TestMain : MonoBehaviour
 {
@@ -31,17 +33,18 @@ public class TestMain : MonoBehaviour
                 cellview.Init(user);
 
                 RectTransform rectTransform = go.GetComponent<RectTransform>();
-                rectTransform.anchoredPosition = new Vector2(261, 0);
+                rectTransform.anchoredPosition = new Vector2(225f, -19f);
 
-                go.SetActive(true); // 셀뷰를 활성화
+                go.SetActive(false); 
 
                 // student 오브젝트 생성 및 위치 설정
                 var waiting = Instantiate(student);
 
                 waiting.transform.position = studentPosition + new Vector3(index * -1, 0, 0);
                 waiting.transform.rotation = studentRotation;
+                waiting.transform.GetChild(0).GetComponent<TextMeshPro>().text = user.ID;
 
-                index++; // 인덱스 증가
+                index++;
             }
         };
 

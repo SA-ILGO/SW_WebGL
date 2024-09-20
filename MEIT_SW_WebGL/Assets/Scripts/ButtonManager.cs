@@ -4,14 +4,17 @@ using UnityEngine;
 public class ButtonManager : MonoBehaviour
 {
     public GameObject userInfo;
+    public GameObject L10button;
+    public GameObject R10button;
+
     public Camera mainCamera;
 
     private GameObject user;
     private int userNum = 1;
 
-    private Vector3 mainCameraPosition = new Vector3(5, 6, -10);
-    private Quaternion mainCameraRotation = Quaternion.Euler(30, -30, 0);
-    private Vector3 studentCameraPosition = new Vector3(-0.8f, 1.41f, -7.33f);
+    private Vector3 mainCameraPosition = new Vector3(-5.43f, 3.444f, -10.74f);
+    private Quaternion mainCameraRotation = Quaternion.Euler(24.41f, 0, 0);
+    private Vector3 studentCameraPosition = new Vector3(-0.65f, 1.41f, -7.33f);
     private Quaternion studentCameraRotation = Quaternion.Euler(17.7f, -24.54f, 0);
 
     public float transitionSpeed;
@@ -34,6 +37,10 @@ public class ButtonManager : MonoBehaviour
         if (user != null)
             user.SetActive(false);
 
+        L10button.SetActive(true);
+        R10button.SetActive(true);
+
+        mainCameraPosition = new Vector3(-5.43f, 3.444f, -10.74f);
         StartCoroutine(TransitionCamera(mainCameraPosition, mainCameraRotation, 56));
     }
 
@@ -43,7 +50,10 @@ public class ButtonManager : MonoBehaviour
         user = userInfo.transform.GetChild(userNum).gameObject;
         user.SetActive(true);
 
-        studentCameraPosition = new Vector3(-0.8f, 1.41f, -7.33f);
+        L10button.SetActive(false);
+        R10button.SetActive(false);
+
+        studentCameraPosition = new Vector3(-0.65f, 1.41f, -7.33f);
         StartCoroutine(TransitionCamera(studentCameraPosition, studentCameraRotation, 50));
     }
 
@@ -55,7 +65,7 @@ public class ButtonManager : MonoBehaviour
         if (userNum == userInfo.transform.childCount - 1)
         {
             userNum = 1;
-            studentCameraPosition.x = -0.8f;
+            studentCameraPosition.x = -0.65f;
         }
         else
         {
@@ -88,6 +98,22 @@ public class ButtonManager : MonoBehaviour
         user.SetActive(true);
 
         StartCoroutine(TransitionCamera(studentCameraPosition, studentCameraRotation, 50));
+    }
+
+    public void Click_BtnL10()
+    {
+        mainCameraPosition.x -= 8f;
+
+        if (mainCameraPosition.x < -54f) mainCameraPosition.x = -5.43f;
+        StartCoroutine(TransitionCamera(mainCameraPosition, mainCameraRotation, 56));
+    }
+
+    public void Click_BtnR10()
+    {
+        mainCameraPosition.x += 8f;
+
+        if (mainCameraPosition.x > -5f) mainCameraPosition.x = -53.43f;
+        StartCoroutine(TransitionCamera(mainCameraPosition, mainCameraRotation, 56));
     }
 
     private IEnumerator TransitionCamera(Vector3 targetPosition, Quaternion targetRotation, float targetFOV)
