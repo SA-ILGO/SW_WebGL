@@ -1,6 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
 public class TestMain : MonoBehaviour
 {
@@ -11,9 +13,12 @@ public class TestMain : MonoBehaviour
 
     public GameObject student;
     private Vector3 studentPosition = new Vector3(-2, 0.4f, -5.72f);
-    private Quaternion studentRotation = Quaternion.Euler(0, -30, 0);
+    private Quaternion studentRotation = Quaternion.Euler(0, 0, 0);
 
     public float spacing;
+
+    public GameObject studentList;
+    public GameObject studentInfoList;
 
     private void Awake()
     {
@@ -22,15 +27,31 @@ public class TestMain : MonoBehaviour
 
     private void Start()
     {
-        HTTPManager.instance.onGetUsers = (users) =>
+        HTTPManager.instance.onGetLineInfo = (users) =>
         {
             int index = 0; // 사용자 인덱스
+
+            if (studentList.transform.childCount > 0) 
+            {
+                foreach (Transform child in studentList.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+                for (int i = studentInfoList.transform.childCount - 1; i > 0; i--)
+                {
+                    Destroy(studentInfoList.transform.GetChild(i).gameObject);
+                }
+            }
+            
+
             foreach (var user in users)
             {
                 // 사용자 셀뷰 생성
                 var go = Instantiate(userCellviewPrefab, UserInfo);
                 var cellview = go.GetComponent<UserCellView>();
-                cellview.Init(user);
+
+                var studentData = HTTPManager.instance.GetStudents()?.FirstOrDefault(s => s.NUID == user.NUID);
+                cellview.SelectUser(studentData, user);
 
                 RectTransform rectTransform = go.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(225f, -19f);
@@ -38,11 +59,11 @@ public class TestMain : MonoBehaviour
                 go.SetActive(false); 
 
                 // student 오브젝트 생성 및 위치 설정
-                var waiting = Instantiate(student);
+                var waitingUser = Instantiate(student, studentList.transform);
 
-                waiting.transform.position = studentPosition + new Vector3(index * -1, 0, 0);
-                waiting.transform.rotation = studentRotation;
-                waiting.transform.GetChild(0).GetComponent<TextMeshPro>().text = user.ID;
+                waitingUser.transform.position = studentPosition + new Vector3(index * -1.5f, 0, 0);
+                waitingUser.transform.rotation = studentRotation;
+                waitingUser.transform.GetChild(0).GetComponent<TextMeshPro>().text = user.ID;
 
                 index++;
             }
@@ -50,4 +71,5 @@ public class TestMain : MonoBehaviour
 
         HTTPManager.instance.RequestUsers();
     }
+
 }

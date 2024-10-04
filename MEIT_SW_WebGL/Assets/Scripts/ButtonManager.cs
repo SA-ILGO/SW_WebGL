@@ -12,10 +12,12 @@ public class ButtonManager : MonoBehaviour
     private GameObject user;
     private int userNum = 1;
 
-    private Vector3 mainCameraPosition = new Vector3(-5.43f, 3.444f, -10.74f);
-    private Quaternion mainCameraRotation = Quaternion.Euler(24.41f, 0, 0);
-    private Vector3 studentCameraPosition = new Vector3(-0.65f, 1.41f, -7.33f);
-    private Quaternion studentCameraRotation = Quaternion.Euler(17.7f, -24.54f, 0);
+    private Vector3 mainCameraPosition = new Vector3(-5.23000002f, 2.57999992f, -10.7399998f);
+    private Vector3 mainCameraPositionStored = new Vector3(-5.23000002f, 2.57999992f, -10.7399998f);
+    private Quaternion mainCameraRotation = Quaternion.Euler(13.457f, 0.051f, 0.217f);
+    private Vector3 studentCameraPosition = new Vector3(-1.46000004f, 1.03999996f, -8.25f);
+    private Vector3 studentCameraPositionStored = new Vector3(-1.46000004f, 1.03999996f, -8.25f);
+    private Quaternion studentCameraRotation = Quaternion.Euler(11.04f, -0, 0);
 
     public float transitionSpeed;
 
@@ -40,7 +42,7 @@ public class ButtonManager : MonoBehaviour
         L10button.SetActive(true);
         R10button.SetActive(true);
 
-        mainCameraPosition = new Vector3(-5.43f, 3.444f, -10.74f);
+        mainCameraPosition = mainCameraPositionStored;
         StartCoroutine(TransitionCamera(mainCameraPosition, mainCameraRotation, 56));
     }
 
@@ -53,7 +55,7 @@ public class ButtonManager : MonoBehaviour
         L10button.SetActive(false);
         R10button.SetActive(false);
 
-        studentCameraPosition = new Vector3(-0.65f, 1.41f, -7.33f);
+        studentCameraPosition = studentCameraPositionStored;
         StartCoroutine(TransitionCamera(studentCameraPosition, studentCameraRotation, 50));
     }
 
@@ -65,12 +67,12 @@ public class ButtonManager : MonoBehaviour
         if (userNum == userInfo.transform.childCount - 1)
         {
             userNum = 1;
-            studentCameraPosition.x = -0.65f;
+            studentCameraPosition.x = -1.46f;
         }
         else
         {
             userNum++;
-            studentCameraPosition.x--;
+            studentCameraPosition.x -= 1.5f;
         }
         user = userInfo.transform.GetChild(userNum).gameObject;
         user.SetActive(true);
@@ -86,14 +88,15 @@ public class ButtonManager : MonoBehaviour
 
         if (userNum == 1)
         {
-            userNum = userInfo.transform.childCount - 1;
-            studentCameraPosition.x -= (userNum - 1);
+            userNum = userInfo.transform.childCount-1; 
+            studentCameraPosition.x = -1.46f - ((userNum-1) * 1.5f); 
         }
         else
         {
-            userNum--;
-            studentCameraPosition.x++;
+            userNum--; 
+            studentCameraPosition.x += 1.5f; 
         }
+
         user = userInfo.transform.GetChild(userNum).gameObject;
         user.SetActive(true);
 

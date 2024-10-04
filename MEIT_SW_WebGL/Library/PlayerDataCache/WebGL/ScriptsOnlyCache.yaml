@@ -5,6 +5,8 @@ ScriptsOnlyBuild:
     - HTTPManager
     - TestMain
     - UserCellView
+    Unity.Formats.Fbx.Editor.dll:
+    - UnityEditor.Formats.Fbx.Exporter.ExportSettings
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro:
@@ -38,6 +40,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.RawImage
   serializedClasses:
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
@@ -72,6 +75,12 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
+    fullTypeName: ButtonManager
+    methodName: Click_BtnInfo
+  - assembly: Assembly-CSharp
+    fullTypeName: ButtonManager
+    methodName: Click_BtnR10
+  - assembly: Assembly-CSharp
     fullTypeName: HTTPManager
     methodName: RequestUsers
   - assembly: Assembly-CSharp
@@ -86,6 +95,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: ButtonManager
     methodName: Click_BtnR
+  - assembly: Assembly-CSharp
+    fullTypeName: ButtonManager
+    methodName: Click_BtnL10
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -108,8 +120,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
@@ -125,43 +135,45 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1622}
+      Script: {instanceID: 1574}
     - Class: 114
-      Script: {instanceID: 2308}
+      Script: {instanceID: 1624}
+    - Class: 114
+      Script: {instanceID: 2310}
     - Class: 114
       Script: {instanceID: 2808}
     - Class: 114
       Script: {instanceID: 3036}
     - Class: 114
-      Script: {instanceID: 3170}
+      Script: {instanceID: 3386}
     - Class: 114
-      Script: {instanceID: 3388}
+      Script: {instanceID: 3908}
     - Class: 114
-      Script: {instanceID: 3910}
+      Script: {instanceID: 4564}
     - Class: 114
-      Script: {instanceID: 4050}
+      Script: {instanceID: 4856}
     - Class: 114
-      Script: {instanceID: 4568}
+      Script: {instanceID: 5678}
     - Class: 114
-      Script: {instanceID: 4648}
+      Script: {instanceID: 6362}
     - Class: 114
-      Script: {instanceID: 4862}
+      Script: {instanceID: 6542}
     - Class: 114
-      Script: {instanceID: 5062}
+      Script: {instanceID: 6920}
     - Class: 114
-      Script: {instanceID: 5686}
+      Script: {instanceID: 9140}
     - Class: 114
-      Script: {instanceID: 6370}
+      Script: {instanceID: 9148}
     - Class: 114
-      Script: {instanceID: 6550}
+      Script: {instanceID: 9152}
     - Class: 114
-      Script: {instanceID: 6928}
+      Script: {instanceID: 9156}
     - Class: 114
-      Script: {instanceID: 32866}
+      Script: {instanceID: 175566}
     - Class: 114
-      Script: {instanceID: 32872}
+      Script: {instanceID: 175572}
     - Class: 114
-      Script: {instanceID: 32874}
+      Script: {instanceID: 175574}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -187,6 +199,12 @@ ScriptsOnlyBuild:
     - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 6f67dd406ddfc18c9b3f8a90725c6266
+    assemblyName: UnityEngine.UI
+    namespaceName: UnityEngine.UI
+    className: RawImage
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -291,12 +309,6 @@ ScriptsOnlyBuild:
     className: UnityOnJointBreakMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 6f67dd406ddfc18c9b3f8a90725c6266
-    assemblyName: UnityEngine.UI
-    namespaceName: UnityEngine.UI
-    className: RawImage
-  - hash:
-      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -391,12 +403,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnInputFieldEndEditMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 937fe2b78ae5ee60b1b74281d97627bc
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: UserCellView
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -531,12 +537,6 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExit2DMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 3b97aa4002fcac03b25665cf19d95372
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ButtonManager
-  - hash:
-      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.Flow
     namespaceName: Unity.VisualScripting
@@ -627,12 +627,6 @@ ScriptsOnlyBuild:
     className: DictionaryAsset
   - hash:
       serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: HTTPManager
-  - hash:
-      serializedVersion: 2
       Hash: 6298a10412e94e11ad85ac6148c9dda1
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -655,12 +649,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerClickMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: c306ce9a057b065a6df9b8ae5d6fe675
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: TestMain
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1089,12 +1077,6 @@ ScriptsOnlyBuild:
     className: StateMachine
   - hash:
       serializedVersion: 2
-      Hash: 53fa2e1c3ebb27028b72e2e8787ebe37
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ShakingHand
-  - hash:
-      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
@@ -1159,7 +1141,37 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: cc0862b6724a1bf194f135894e013f7b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: TestMain
+  - hash:
+      serializedVersion: 2
+      Hash: 53fa2e1c3ebb27028b72e2e8787ebe37
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ShakingHand
+  - hash:
+      serializedVersion: 2
+      Hash: b60a6aecffaf9607e10a6ce0e15fabb8
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: UserCellView
+  - hash:
+      serializedVersion: 2
+      Hash: 0f0087dfe582a53d84678131f0de59d0
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ButtonManager
+  - hash:
+      serializedVersion: 2
+      Hash: 4c4172f024cf4d602955b5a7656bec47
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: HTTPManager
   platform: 20
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/user/Documents/GitHub/SW_WEB_SEJIN/SW_WEB/Build
+  playerPath: C:/Users/user/Documents/GitHub/SW_WEB_SEJIN/SW_WEB2/Build
