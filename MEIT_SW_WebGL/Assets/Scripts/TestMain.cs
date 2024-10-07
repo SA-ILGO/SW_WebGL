@@ -23,7 +23,11 @@ public class TestMain : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        #if UNITY_WEBGL && !UNITY_EDITOR
+                WebGLInput.captureAllKeyboardInput = false;
+        #endif
     }
+
 
     private void Start()
     {

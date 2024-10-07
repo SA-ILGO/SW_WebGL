@@ -36,6 +36,9 @@ extern void HTTPManager_RequestUsers_m403D1813A22835C3A544735E71A03518EDE0A161 (
 extern void HTTPManager_RequestUsersImpl_m2207473A7A7C088C0D103E45DD2D3D8F01CFE4B8 (void);
 extern void HTTPManager_GetStudents_mC4BC4BA9C19AB1EAA82A49BC2B4E19435AE4AC81 (void);
 extern void HTTPManager__ctor_m83528A73AD4759348F8FC69F44E90313FF3E8B1F (void);
+extern void U3CU3Ec__cctor_m2D9C7523417BE0FEA2F0D0C9283F8F04C7319ADE (void);
+extern void U3CU3Ec__ctor_m08C24BB0C807BE33261CBBC33C0CBBA6C5A471FF (void);
+extern void U3CU3Ec_U3CRequestUsersImplU3Eb__8_0_mBB980205DF9695D6ED684E2F41EAB06883339A95 (void);
 extern void U3CRequestUsersImplU3Ed__8__ctor_m56FCC10C03E14B5AF42B0D00725D226A995C12DC (void);
 extern void U3CRequestUsersImplU3Ed__8_System_IDisposable_Dispose_m4DA4D7E16831B4629BEC50D217B25E839D058B04 (void);
 extern void U3CRequestUsersImplU3Ed__8_MoveNext_m84111F62EF1C4D604F11C5A0E49F090A25237D11 (void);
@@ -56,7 +59,7 @@ extern void UserCellView_SelectUser_m6A3A7B0F0EADC143BF66ABC536A324CA124BB524 (v
 extern void UserCellView__ctor_mAEF295BD6B37F7C05788CBDBEDEF8F7C7A78B9F7 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[44] = 
+static Il2CppMethodPointer s_methodPointers[47] = 
 {
 	ButtonManager_Start_m1031E938A2FB8D85F993AA7DF29D06DAF0CDF930,
 	ButtonManager_Update_m8A6A02F642A23DDDD0D1C1B1EB563E144AE12590,
@@ -82,6 +85,9 @@ static Il2CppMethodPointer s_methodPointers[44] =
 	HTTPManager_RequestUsersImpl_m2207473A7A7C088C0D103E45DD2D3D8F01CFE4B8,
 	HTTPManager_GetStudents_mC4BC4BA9C19AB1EAA82A49BC2B4E19435AE4AC81,
 	HTTPManager__ctor_m83528A73AD4759348F8FC69F44E90313FF3E8B1F,
+	U3CU3Ec__cctor_m2D9C7523417BE0FEA2F0D0C9283F8F04C7319ADE,
+	U3CU3Ec__ctor_m08C24BB0C807BE33261CBBC33C0CBBA6C5A471FF,
+	U3CU3Ec_U3CRequestUsersImplU3Eb__8_0_mBB980205DF9695D6ED684E2F41EAB06883339A95,
 	U3CRequestUsersImplU3Ed__8__ctor_m56FCC10C03E14B5AF42B0D00725D226A995C12DC,
 	U3CRequestUsersImplU3Ed__8_System_IDisposable_Dispose_m4DA4D7E16831B4629BEC50D217B25E839D058B04,
 	U3CRequestUsersImplU3Ed__8_MoveNext_m84111F62EF1C4D604F11C5A0E49F090A25237D11,
@@ -103,58 +109,61 @@ static Il2CppMethodPointer s_methodPointers[44] =
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[44] = 
+static const int32_t s_InvokerIndices[47] = 
 {
-	4472,
-	4472,
-	4472,
-	4472,
-	4472,
-	4472,
-	4472,
-	4472,
+	4432,
+	4432,
+	4432,
+	4432,
+	4432,
+	4432,
+	4432,
+	4432,
 	853,
-	4472,
-	3561,
-	4472,
-	4299,
-	4374,
-	4472,
-	4374,
-	4472,
-	4472,
-	4472,
-	4472,
-	4472,
-	4374,
-	4374,
-	4472,
-	3561,
-	4472,
-	4299,
-	4374,
-	4472,
-	4374,
-	4472,
-	4472,
-	4472,
-	4472,
-	4472,
-	4472,
-	3586,
-	4472,
-	2532,
-	1915,
-	1915,
-	4472,
-	6507,
-	4472,
+	4432,
+	3543,
+	4432,
+	4259,
+	4334,
+	4432,
+	4334,
+	4432,
+	4432,
+	4432,
+	4432,
+	4432,
+	4334,
+	4334,
+	4432,
+	6373,
+	4432,
+	2525,
+	3543,
+	4432,
+	4259,
+	4334,
+	4432,
+	4334,
+	4432,
+	4432,
+	4432,
+	4432,
+	4432,
+	4432,
+	3568,
+	4432,
+	2525,
+	1914,
+	1914,
+	4432,
+	6377,
+	4432,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	44,
+	47,
 	s_methodPointers,
 	0,
 	NULL,

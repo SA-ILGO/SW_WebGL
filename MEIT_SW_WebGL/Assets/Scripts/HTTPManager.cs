@@ -21,6 +21,7 @@ public class Line
     public string NUID;
     public string Time;
     public string WaitingNumber;
+    public string WaitingRealTimeNumber;
     public string WaitingSpot;
     public int ReceiptConfirmation;
     public string WaitingFinishedTime;
@@ -68,7 +69,6 @@ public class HTTPManager : MonoBehaviour
         {
             Debug.Log("WEB Connected");
             var json = www.downloadHandler.text;
-            Debug.Log("Received JSON: " + json);
 
             // JSON 문자열을 ResGetUsers 객체로 변환
             var res_get_users = JsonUtility.FromJson<ResGetUsers>(json);
@@ -80,7 +80,8 @@ public class HTTPManager : MonoBehaviour
             }
             if (res_get_users.lines != null)
             {
-                onGetLineInfo?.Invoke(res_get_users.lines);
+                List<Line> waitingUsers = res_get_users.lines.FindAll(line => line.ReceiptConfirmation == 0);
+                onGetLineInfo?.Invoke(waitingUsers);
             }
         }
         else

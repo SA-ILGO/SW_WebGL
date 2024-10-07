@@ -955,7 +955,7 @@ MonoBehaviour:
   userId: {fileID: 8053708925233370760}
   userMajor: {fileID: 503543830838647974}
   userName: {fileID: 6810304073950293420}
-  userWaitingNumber: {fileID: 4341741216567195224}
+  userWaitingRealNumber: {fileID: 4341741216567195224}
 --- !u!1 &8317041209787719313
 GameObject:
   m_ObjectHideFlags: 0

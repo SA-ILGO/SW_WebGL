@@ -34,7 +34,7 @@ public class ButtonManager : MonoBehaviour
     }
 
     public void Click_BtnX()
-    {
+    {   
         userInfo.SetActive(false);
         if (user != null)
             user.SetActive(false);
@@ -48,6 +48,7 @@ public class ButtonManager : MonoBehaviour
 
     public void Click_BtnInfo()
     {
+        userNum = 1;
         userInfo.SetActive(true);
         user = userInfo.transform.GetChild(userNum).gameObject;
         user.SetActive(true);
@@ -107,7 +108,7 @@ public class ButtonManager : MonoBehaviour
     {
         mainCameraPosition.x -= 8f;
 
-        if (mainCameraPosition.x < -54f) mainCameraPosition.x = -5.43f;
+        if (mainCameraPosition.x < -29.23f) mainCameraPosition.x = -5.23f;
         StartCoroutine(TransitionCamera(mainCameraPosition, mainCameraRotation, 56));
     }
 
@@ -115,7 +116,7 @@ public class ButtonManager : MonoBehaviour
     {
         mainCameraPosition.x += 8f;
 
-        if (mainCameraPosition.x > -5f) mainCameraPosition.x = -53.43f;
+        if (mainCameraPosition.x > -5f) mainCameraPosition.x = -29.23f;
         StartCoroutine(TransitionCamera(mainCameraPosition, mainCameraRotation, 56));
     }
 
